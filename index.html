@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎋 竹斬り道場 - Ultimate Bamboo Cutting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>🎋 竹斬り道場</h1>
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">切断数</span>
+                    <span id="cutCount" class="value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">連続</span>
+                    <span id="comboCount" class="value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">最高記録</span>
+                    <span id="highScore" class="value">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <canvas id="gameCanvas"></canvas>
+            <canvas id="particleCanvas"></canvas>
+            <canvas id="effectCanvas"></canvas>
+            
+            <!-- 竹ノード -->
+            <div class="bamboo-container" id="bambooContainer">
+                <!-- 動的に生成される竹 -->
+            </div>
+            
+            <!-- 斬撃エフェクト -->
+            <div class="slash-effects" id="slashEffects">
+                <!-- 動的に生成される斬撃エフェクト -->
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label>竹の硬さ</label>
+                <select id="difficultySelect">
+                    <option value="easy">🌱 新竹 (Easy)</option>
+                    <option value="normal" selected>🎋 普通竹 (Normal)</option>
+                    <option value="hard">🎍 古竹 (Hard)</option>
+                    <option value="extreme">⚔️ 鉄竹 (Extreme)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>竹の太さ</label>
+                <input type="range" id="bambooSize" min="30" max="100" value="60">
+                <span id="sizeValue">60</span>
+            </div>
+            
+            <div class="control-group">
+                <label>生成速度</label>
+                <input type="range" id="spawnRate" min="500" max="3000" value="1500">
+                <span id="rateValue">1.5秒</span>
+            </div>
+            
+            <div class="control-group">
+                <label>効果音</label>
+                <input type="checkbox" id="soundEnabled" checked>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button id="startBtn" class="btn primary">🎋 修行開始</button>
+            <button id="pauseBtn" class="btn">⏸️ 一時停止</button>
+            <button id="resetBtn" class="btn">🔄 リセット</button>
+            <button id="zenModeBtn" class="btn special">🧘 禅モード</button>
+        </div>
+        
+        <!-- インストラクション -->
+        <div class="instructions">
+            <h3>🥷 竹斬りの心得</h3>
+            <ul>
+                <li>🖱️ マウスで竹を一直線に斬る</li>
+                <li>📱 タッチデバイスではスワイプで斬撃</li>
+                <li>⚡ 速く連続で斬ると高得点</li>
+                <li>💎 完璧な斬撃でボーナス獲得</li>
+                <li>🎯 竹の中心を狙うとクリティカル</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 音声コンテナ -->
+    <div id="audioContainer" style="display: none;"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
